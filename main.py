@@ -217,3 +217,41 @@ def telegram_webhook():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+    # ১. যখনই আপনি /admin বা অ্যাডমিন প্যানেল ওপেন করবেন
+@bot.message_handler(commands=['admin'])
+def admin_panel(message):
+    if str(message.chat.id) == str(ADMIN_ID):
+        markup = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
+        btn1 = types.KeyboardButton("➕ Add Number")
+        btn2 = types.KeyboardButton("➕ Add FB ID")
+        btn3 = types.KeyboardButton("💰 Add Balance")
+        btn4 = types.KeyboardButton("📦 Check Stock")
+        btn5 = types.KeyboardButton("📢 Broadcast")
+        btn6 = types.KeyboardButton("🔙 Main Menu")
+        markup.add(btn1, btn2, btn3, btn4, btn5, btn6)
+        bot.send_message(message.chat.id, "🛠 **Admin Control Panel:**\nনিচের অপশনগুলো থেকে আপনার প্রয়োজনীয় কাজটি সিলেক্ট করুন:", parse_mode="Markdown", reply_markup=markup)
+    else:
+        bot.send_message(message.chat.id, "❌ আপনি এই কমান্ড ব্যবহার করার অনুমতিপ্রাপ্ত নন।")
+
+# ২. বাটনগুলোতে ক্লিক করলে বা টেক্সট আসলে যা কাজ করবে
+@bot.message_handler(func=lambda message: str(message.chat.id) == str(ADMIN_ID))
+def admin_button_handler(message):
+    text = message.text
+    
+    if text == "➕ Add Number":
+        bot.send_message(message.chat.id, "নম্বর যোগ করতে এই ফরম্যাটে লিখুন:\n`/addnumber [নম্বর]`", parse_mode="Markdown")
+        
+    elif text == "➕ Add FB ID":
+        bot.send_message(message.chat.id, "ফেইসবুক আইডি যোগ করতে এই ফরম্যাটে লিখুন:\n`/addfb [আইডি ডিটেইলস]`", parse_mode="Markdown")
+        
+    elif text == "💰 Add Balance":
+        bot.send_message(message.chat.id, "ব্যালেন্স যোগ করতে এই ফরম্যাটে লিখুন:\n`/addbalance [USER_ID] [AMOUNT]`\n\nউদাহরণ: `/addbalance 123456789 10`", parse_mode="Markdown")
+        
+    elif text == "📦 Check Stock":
+        # এখানে আপনার বর্তমান স্টকে কতগুলো নম্বর বা ফেসবুক আইডি আছে তার হিসাব দেখাবে
+        num_count = len(numbers_stock) if 'numbers_stock' in globals() else 0
+        fb_count = len(fb_account) if 'fb_account' in globals() else 0
+        bot.send_message(message.chat.id, f"📊 **Current Stock Status:**\n- মোট নম্বর স্টক: {num_count} টি\n- মোট FB ID স্টক: {fb_count} টি", parse_mode="Markdown")
+        
+    elif text == "📢 Broadcast":
+        bot.send_message(message.chat.id, "📢 সব ইউজারের কাছে কোনো নোটিশ বা অফার পাঠাতে চাইলে এই ফিচারটি ব্যবহার করতে পারেন (প্রয়োজনে এটি চালু করে দেওয়া যাবে)।")

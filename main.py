@@ -213,10 +213,6 @@ def telegram_webhook():
         bot.process_new_updates([update])
         return ''
     return 'Unauthorized', 403
-
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
     # ১. যখনই আপনি /admin বা অ্যাডমিন প্যানেল ওপেন করবেন
 @bot.message_handler(commands=['admin'])
 def admin_panel(message):
@@ -248,10 +244,12 @@ def admin_button_handler(message):
         bot.send_message(message.chat.id, "ব্যালেন্স যোগ করতে এই ফরম্যাটে লিখুন:\n`/addbalance [USER_ID] [AMOUNT]`\n\nউদাহরণ: `/addbalance 123456789 10`", parse_mode="Markdown")
         
     elif text == "📦 Check Stock":
-        # এখানে আপনার বর্তমান স্টকে কতগুলো নম্বর বা ফেসবুক আইডি আছে তার হিসাব দেখাবে
         num_count = len(numbers_stock) if 'numbers_stock' in globals() else 0
-        fb_count = len(fb_account) if 'fb_account' in globals() else 0
+        fb_count = len(fb_ids_stock) if 'fb_ids_stock' in globals() else 0
         bot.send_message(message.chat.id, f"📊 **Current Stock Status:**\n- মোট নম্বর স্টক: {num_count} টি\n- মোট FB ID স্টক: {fb_count} টি", parse_mode="Markdown")
         
     elif text == "📢 Broadcast":
-        bot.send_message(message.chat.id, "📢 সব ইউজারের কাছে কোনো নোটিশ বা অফার পাঠাতে চাইলে এই ফিচারটি ব্যবহার করতে পারেন (প্রয়োজনে এটি চালু করে দেওয়া যাবে)।")
+        bot.send_message(message.chat.id, "📢 সব ইউজারের কাছে কোনো নোটিশ বা অফার পাঠাতে চাইলে এই ফিচারটি ব্যবহার করতে পারেন।")
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)

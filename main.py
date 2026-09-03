@@ -7,7 +7,7 @@ from telebot import TeleBot, types
 # কনফিগারেশন (আপনার তথ্য দিয়ে সরাসরি বসানো)
 # ==========================================
 TELEGRAM_BOT_TOKEN = "8866015274:AAGBzT3Jgmwuoeme41Zy3uxUh_xjkeFabZI"
-ADMIN_ID = "8601269430"
+ADMIN_ID = "6688928171"
 
 PAYMENT_NUMBER = "01948248391"      # Bkash & Nagad Personal
 BINANCE_PAY_ID = "802479401"        # Binance Pay ID
@@ -32,7 +32,7 @@ TEXTS = {
         'welcome': "👋 স্বাগতম! আমাদের ওটিপি এবং ডিজিটাল প্রোডাক্ট সার্ভিস বটে। নিচের মেনু থেকে আপনার সার্ভিস নির্বাচন করুন।",
         'buy_num': "📱 নাম্বার কিনুন (Buy Number) - $0.40",
         'buy_fb': "👤 ফেসবুক আইডি কিনুন (Buy USA FB ID)",
-        'recharge': "💳 ব্যালেন্স রিচার্জ (Recharge)",
+        'recharge': "💳 ব্যালেন্স রিচার্জ (Rearge)",
         'profile': "👤 আমার প্রোফাইল (My Profile)",
         'support': "💬 লাইভ সাপোর্ট (Live Support)",
         'lang_set': "🌐 ভাষা পরিবর্তন (Language)",

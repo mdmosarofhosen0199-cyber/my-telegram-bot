@@ -3,8 +3,8 @@ import telebot
 from telebot import types
 from flask import Flask, request, jsonify
 
-TOKEN = os.environ.get('BOT_TOKEN', '8903753705:AAGECTwArgyk6TNgVkTWnARBTnn_V5YUM-U')
-ADMIN_ID = "6688928171"
+TOKEN = os.environ.get('BOT_TOKEN', '8597043763:AAFJQXMszLD1mQmZRoHsSTCVZpAazZaMud4')
+ADMIN_ID = "8601269430"
 
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)

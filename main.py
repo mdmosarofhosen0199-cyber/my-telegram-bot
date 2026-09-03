@@ -6,7 +6,7 @@ from telebot import TeleBot, types
 # ==========================================
 # কনফিগারেশন (আপনার তথ্য দিয়ে সরাসরি বসানো)
 # ==========================================
-TELEGRAM_BOT_TOKEN = "8886047734:AAE6TO-EeYX2y6dtJCzzXKzeUJ43ON3bOEM"
+TELEGRAM_BOT_TOKEN = "8866015274:AAGBzT3Jgmwuoeme41Zy3uxUh_xjkeFabZI"
 ADMIN_ID = "8601269430"
 
 PAYMENT_NUMBER = "01948248391"      # Bkash & Nagad Personal

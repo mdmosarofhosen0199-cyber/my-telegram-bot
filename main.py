@@ -18,12 +18,12 @@ def home():
 
 @app.route('/telegram', methods=['POST'])
 def telegram_webhook():
-    if request.headers.get('content-type') == 'application/json':
-        json_string = request.get_data().decode('utf-8')
-        update = types.Update.de_json(json_string)
-        bot.process_new_updates([update])
-        return ''
-    return 'Unauthorized', 403
+    @app.route('/telegram', methods=['POST'])
+def telegram_webhook():
+    json_string = request.get_data().decode('utf-8')
+    update = types.Update.de_json(json_string)
+    bot.process_new_updates([update])
+    return jsonify({"status": "ok"}), 200
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
